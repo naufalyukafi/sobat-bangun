@@ -3,6 +3,7 @@ import React from "react";
 import LandingPageTemplate from "./components/templates/landingpagetemplate";
 import Hero from "./components/molecules/hero";
 import RoomCard from "./components/molecules/room";
+import Testimony from "./components/molecules/testimony";
 
 export default function Home() {
   return (
@@ -30,9 +31,16 @@ export default function Home() {
           </div>
 
           <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3 mt-12">
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1">
               <RoomCard />
-              <RoomCard />
+              <h1 className="text-3xl font-bold text-primary mt-8">
+                Testimoni
+              </h1>
+              <div className="gap-6 mt-5">
+                <Testimony />
+                <Testimony />
+                <Testimony />
+              </div>
             </div>
           </div>
         </div>
