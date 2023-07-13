@@ -19,21 +19,30 @@ const Navbar: React.FC = () => {
         { text: "Testimoni", href: "#" },
       ],
     },
-    { text: "Produk dan Layanan", href: "#", dropdown: [] },
+    {
+      text: "Produk dan Layanan",
+      href: "#",
+      dropdown: [],
+    },
     { text: "Blog", href: "#" },
     { text: "FAQ", href: "#" },
   ];
 
+  const [openSidebar, setOpenSidebar] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
+  const handleSidebarToggle = () => {
+    setOpenSidebar(!openSidebar);
+  };
+
   const handleDropdownClick = (index: number) => {
-    setOpenDropdown(openDropdown === index ? null : index);
+    setOpenDropdown((prevState) => (prevState === index ? null : index));
   };
 
   return (
     <nav className="bg-white w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-10">
-        <a href="https://flowbite.com/" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img
             src="./images/logo.png"
             className="h-8 mr-3 object-cover"
@@ -41,26 +50,27 @@ const Navbar: React.FC = () => {
           />
         </a>
         <div className="flex md:order-2 gap-3">
+          <div className="hidden md:block">
+            <button
+              type="button"
+              className={`text-black bg-white font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:hover:outline-primary-700`}
+            >
+              Daftar
+            </button>
+            <button
+              type="button"
+              className={`text-white bg-primary-700 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:hover:bg-primary-700`}
+            >
+              Masuk
+            </button>
+          </div>
           <button
-            type="button"
-            className={`text-black bg-white font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:hover:outline-primary-700`}
-          >
-            Daftar
-          </button>
-          <button
-            type="button"
-            className={`text-white bg-primary-700 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:hover:bg-primary-700`}
-          >
-            Masuk
-          </button>
-          <button
-            onClick={() => handleDropdownClick(-1)}
+            onClick={handleSidebarToggle}
             type="button"
             className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`}
             aria-controls="navbar-sticky"
-            aria-expanded={openDropdown !== null}
+            aria-expanded={openSidebar}
           >
-            {/* <span className="sr-only">Open main menu</span> */}
             <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -126,66 +136,25 @@ const Navbar: React.FC = () => {
       </div>
 
       <div
-        className="flex max-w-screen-xl mx-auto px-10 mb-5"
-        aria-label="Breadcrumb"
+        className={`fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-30 transform transition-transform duration-300 ease-in-out ${
+          openSidebar ? "translate-x-0" : "-translate-x-full"
+        } md:hidden`}
       >
-        <ol className="inline-flex items-center space-x-1 md:space-x-3">
-          <li className="inline-flex items-center">
-            <a
-              href="#"
-              className="inline-flex items-center text-sm font-medium text-primary-700 hover:text-gray-700"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <div className="flex items-center">
-              <svg
-                className="w-3 h-3 text-gray-400 mx-1"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-              <a
-                href="#"
-                className="ml-1 text-sm font-medium text-primary-700 hover:text-gray-700"
-              >
-                Layanan Desain
-              </a>
-            </div>
-          </li>
-          <li aria-current="page">
-            <div className="flex items-center">
-              <svg
-                className="w-3 h-3 text-gray-400 mx-1"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-              <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
-                Omah Apik 3
-              </span>
-            </div>
-          </li>
-        </ol>
+        <div className="flex flex-col h-full py-6 px-4 bg-gray-50">
+          <h3 className="text-xl font-semibold mb-4">Sidebar</h3>
+          <ul className="space-y-2">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.href}
+                  className="text-blue-500 hover:text-blue-700 font-medium"
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );
