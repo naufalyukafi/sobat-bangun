@@ -1,0 +1,35 @@
+{
+    "rooms": [
+      {
+        "id": 1,
+        "title": "Ruang Keluarga",
+        "description": "2.0 x 2.9",
+        "image": "./ruang-keluarga.png"
+      },
+      {
+        "id": 2,
+        "title": "Kamar tidur",
+        "description": "4.0 x 3.4",
+        "image": "./kamar-tidur.png"
+      },
+      {
+        "id": 3,
+        "title": "Ruang Makan dan Dapur",
+        "description": "3.0 x 2.9",
+        "image": "./dapur.png"
+      },
+      {
+        "id": 4,
+        "title": "Ruang Kerja",
+        "description": "2.0 x 2.5",
+        "image": "./ruang-keluarga.png"
+      },
+      {
+        "id": 5,
+        "title": "Kamar tidur",
+        "description": "4.0 x 3.4",
+        "image": "./ruang-keluarga.png"
+      }
+     
+    ]
+  }
