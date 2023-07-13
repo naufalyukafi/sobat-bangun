@@ -19,7 +19,7 @@ export default function Home() {
                 Tampilan Rumah
               </h1>
             </div>
-            <div className="min-w-full flex flex-wrap col-span-12 md:col-span-4 gap-4 justify-center">
+            <div className="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
               <RoomCard />
               <RoomCard />
               <RoomCard />
