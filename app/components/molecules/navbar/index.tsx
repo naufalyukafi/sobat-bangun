@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0">
+    <nav className="bg-white w-full">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-10">
         <a href="https://flowbite.com/" className="flex items-center">
           <img
@@ -103,7 +103,7 @@ const Navbar: React.FC = () => {
                 </a>
                 {item.dropdown && item.dropdown.length > 0 && (
                   <ul
-                    className={`absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg ${
+                    className={`absolute z-10 left-0 mt-2 w-48 bg-white rounded-lg shadow-lg ${
                       index === openDropdown ? "block" : "hidden"
                     }`}
                   >
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <div
-        className="flex max-w-screen-xl mx-auto px-10"
+        className="flex max-w-screen-xl mx-auto px-10 mb-5"
         aria-label="Breadcrumb"
       >
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
